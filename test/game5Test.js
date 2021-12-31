@@ -19,9 +19,9 @@ describe("Game5", function() {
     let foundWallet = false;
     while(!foundWallet) {
       wallet = ethers.Wallet.createRandom();
-      if (BigInt(await wallet.getAddress()) < BigInt(0x00FfFFfFFFfFFFFFfFfFfffFFFfffFfFffFfFFFf) ) {
+      address = await wallet.getAddress();
+      if (BigInt(address) < BigInt(0x00FfFFfFFFfFFFFFfFfFfffFFFfffFfFffFfFFFf) ) {
         foundWallet = true;
-        address = await wallet.getAddress();  
         console.log("Wallet under threshold at: " + address);
       }
     }
